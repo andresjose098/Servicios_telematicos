@@ -1,0 +1,50 @@
+#Description: this program simulates a blockchain 
+
+#Import the library
+import hashlib
+
+#Create a block class
+class Block:
+  #create a constructor for the block class
+  def __init__(self, data, prev_hash):
+    self.data = data
+    self.prev_hash= prev_hash
+    self.hash =self.calc_hash()
+
+  #create a method that calculates the hash using SHA-256
+  def calc_hash(self):
+    sha = hashlib.sha256()
+    sha.update(self.data.encode('utf-8'))
+    return sha.hexdigest()
+
+#Create the blockchain class
+class Blockchain:
+  #Create a constructor for the Blockchain class
+  def __init__(self):
+    self.chain = [self.create_genesis_block()]
+  
+  #Create a method that create the first block in the blockchain also known as the 'Genesis Block'
+  def create_genesis_block(self):
+    return Block("Genesis Block","0")
+
+  #Create a method that creates a new block and adds it to the block chain (aka the list)
+  def add_block(self, data):
+    prev_block = self.chain[-1]
+    new_block = Block(data, prev_block.hash)
+    self.chain.append(new_block)
+
+  #Test the Blockchain
+  blockchain = Blockchain()
+ 
+  #Add blocks to the blockchainb
+  lockchain.add_block('First block')
+  blockchain.add_block('Second block')
+  blockchain.add_block('Third block')
+ 
+   #Print and show the blockchain
+  print('Blockchain:')
+  for block in blockchain.chain:
+  print('Data:', block.data)
+  print('Previous hash:', block.prev_hash)
+  print('Hash:', block.hash)
+  print()

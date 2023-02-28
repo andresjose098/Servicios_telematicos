@@ -1,0 +1,14 @@
+Httpdconf
+vim /etc/httpd/conf/httpd.conf
+
+Archivos Zonas
+cd /var/named
+
+Config Named
+vim /etc/named.conf
+
+curl -I -H 'Accept-Encoding: gzip,deflate' parcial.esteban.com/gato.mp4
+
+localhost:5080
+
+vagrant share servidor
